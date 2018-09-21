@@ -19,14 +19,13 @@ import java.util.Collections;
  */
 public class Main {
 
-    private static void newSelectMappedStatement(Configuration configuration, String msId, SqlSource sqlSource, SqlCommandType sqlCommandType, final Class<?> resultType) {
-        MappedStatement ms = new MappedStatement.Builder(
-                configuration, msId, sqlSource, sqlCommandType)
-                .resultMaps(Collections.singletonList(new ResultMap.Builder(configuration, "defaultResultMap", resultType, new ArrayList<ResultMapping>(0)).build()))
-                .keyGenerator(new Jdbc3KeyGenerator())
-                .keyProperty("id")
-                .build();
-        configuration.addMappedStatement(ms);
+    private static void newMappedStatement(Configuration configuration, String msId, SqlSource sqlSource, SqlCommandType sqlCommandType, final Class<?> resultType) {
+        MappedStatement.Builder builder = new MappedStatement.Builder(configuration, msId, sqlSource, sqlCommandType);
+        builder.resultMaps(Collections.singletonList(new ResultMap.Builder(configuration, "defaultResultMap", resultType, new ArrayList<ResultMapping>(0)).build()));
+        if (sqlCommandType == SqlCommandType.INSERT) {
+            builder.keyGenerator(new Jdbc3KeyGenerator()).keyProperty("id");
+        }
+        configuration.addMappedStatement(builder.build());
     }
 
     public static void main(String[] args) throws Exception {
@@ -45,14 +44,14 @@ public class Main {
         }
         XMLLanguageDriver xmlLanguageDriver = new XMLLanguageDriver();
         SqlSource sqlSource = xmlLanguageDriver.createSqlSource(sqlSessionTemplate.getConfiguration(), "select * from user where id=#{id}", Integer.class);
-        newSelectMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.select2", sqlSource, SqlCommandType.SELECT, User.class);
+        newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.select2", sqlSource, SqlCommandType.SELECT, User.class);
 
         SqlSource sqlSource2 = xmlLanguageDriver.createSqlSource(sqlSessionTemplate.getConfiguration(), "insert into user (id,name) values(#{id},#{name})", User.class);
-        newSelectMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.insert", sqlSource2, SqlCommandType.INSERT, Integer.class);
+        newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.insertSelective", sqlSource2, SqlCommandType.INSERT, Integer.class);
         User user = new User();
 //        user.setId(91);
         user.setName("fghgfg");
-        System.out.println(userMapper.insert(user));
+        System.out.println(userMapper.insertSelective(user));
         System.out.println(user.getId());
 //        System.out.println(userMapper.select2(37));
 //        System.out.println(userMapper.select());
