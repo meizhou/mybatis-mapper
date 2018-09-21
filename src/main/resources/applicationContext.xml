@@ -33,7 +33,7 @@
         <property name="testOnReturn" value="false"/>
     </bean>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="com.meizhou.mybatis.mapper.CommonMapperSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
         <property name="mapperLocations">

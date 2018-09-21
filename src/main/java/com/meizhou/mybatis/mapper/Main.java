@@ -9,9 +9,7 @@ import org.apache.ibatis.session.Configuration;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -31,17 +29,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
         context.start();
-        context.refresh();
+//        context.refresh();
         SqlSessionTemplate sqlSessionTemplate = context.getBean(SqlSessionTemplate.class);
         IUserMapper userMapper = sqlSessionTemplate.getMapper(IUserMapper.class);
 
-
-        Collection<Class<?>> mappers = sqlSessionTemplate.getConfiguration().getMapperRegistry().getMappers();
-        for (Class<?> clazz : mappers) {
-            for (Method method : clazz.getMethods()) {
-                System.out.println(method.getName());
-            }
-        }
         XMLLanguageDriver xmlLanguageDriver = new XMLLanguageDriver();
         SqlSource sqlSource = xmlLanguageDriver.createSqlSource(sqlSessionTemplate.getConfiguration(), "select * from user where id=#{id}", Integer.class);
         newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.select2", sqlSource, SqlCommandType.SELECT, User.class);
@@ -50,7 +41,7 @@ public class Main {
         newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.insertSelective", sqlSource2, SqlCommandType.INSERT, Integer.class);
         User user = new User();
 //        user.setId(91);
-        user.setName("fghgfg");
+        user.setName(System.currentTimeMillis() + "");
         System.out.println(userMapper.insertSelective(user));
         System.out.println(user.getId());
 //        System.out.println(userMapper.select2(37));

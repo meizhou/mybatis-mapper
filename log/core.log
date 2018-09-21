@@ -1,0 +1,12 @@
+2018-09-21/15:49:16.454 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-09-21/15:49:16.513 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1537516156428(String)
+2018-09-21/15:49:16.518 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-09-21/15:53:17.354 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-09-21/15:53:17.428 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1537516397324(String)
+2018-09-21/15:53:17.435 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-09-21/15:53:45.682 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-09-21/15:53:45.737 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1537516425614(String)
+2018-09-21/15:53:45.741 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-09-21/15:55:02.399 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-09-21/15:55:02.464 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1537516502371(String)
+2018-09-21/15:55:02.472 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
