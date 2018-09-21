@@ -7,9 +7,8 @@ import java.util.List;
 /**
  * Created by meizhou on 2018/9/15.
  */
-public interface IUserMapper {
-
-    int select();
+public interface IUserMapper extends IBaseMapper<User> {
 
     List<User> select2();
+
 }
