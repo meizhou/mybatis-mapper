@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface IBaseMapper<T> {
 
-    int insert();
+    int insert(T t);
 
     int updateById();
 
