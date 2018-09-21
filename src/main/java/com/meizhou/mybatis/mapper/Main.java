@@ -29,7 +29,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
         context.start();
-//        context.refresh();
         SqlSessionTemplate sqlSessionTemplate = context.getBean(SqlSessionTemplate.class);
         IUserMapper userMapper = sqlSessionTemplate.getMapper(IUserMapper.class);
 
