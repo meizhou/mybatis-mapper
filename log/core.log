@@ -10,3 +10,18 @@
 2018-09-21/15:55:02.399 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
 2018-09-21/15:55:02.464 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1537516502371(String)
 2018-09-21/15:55:02.472 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-11-02/16:27:09.415 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-11-02/16:27:09.475 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1541147229381(String)
+2018-11-02/16:27:09.489 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-11-02/16:29:01.479 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-11-02/16:29:01.553 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1541147341451(String)
+2018-11-02/16:29:01.559 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-11-02/16:29:01.574 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select * from user where id=? 
+2018-11-02/16:29:01.576 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 37(Integer)
+2018-11-02/16:29:01.607 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 1
+2018-11-02/16:30:42.435 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-11-02/16:30:42.575 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1541147442375(String)
+2018-11-02/16:30:42.582 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-11-02/16:30:42.600 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select * from user where id=? 
+2018-11-02/16:30:42.602 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 37(Integer)
+2018-11-02/16:30:42.621 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 1

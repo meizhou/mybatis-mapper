@@ -15,7 +15,7 @@ import java.util.Collections;
 /**
  * Created by meizhou on 2018/9/15.
  */
-public class Main {
+public class MainStatement {
 
     private static void newMappedStatement(Configuration configuration, String msId, SqlSource sqlSource, SqlCommandType sqlCommandType, final Class<?> resultType) {
         MappedStatement.Builder builder = new MappedStatement.Builder(configuration, msId, sqlSource, sqlCommandType);
@@ -33,18 +33,16 @@ public class Main {
         IUserMapper userMapper = sqlSessionTemplate.getMapper(IUserMapper.class);
 
         XMLLanguageDriver xmlLanguageDriver = new XMLLanguageDriver();
-        SqlSource sqlSource = xmlLanguageDriver.createSqlSource(sqlSessionTemplate.getConfiguration(), "select * from user where id=#{id}", Integer.class);
-        newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.select2", sqlSource, SqlCommandType.SELECT, User.class);
-
-        SqlSource sqlSource2 = xmlLanguageDriver.createSqlSource(sqlSessionTemplate.getConfiguration(), "insert into user (id,name) values(#{id},#{name})", User.class);
-        newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.insertSelective", sqlSource2, SqlCommandType.INSERT, Integer.class);
+        SqlSource sqlSourceSelect = xmlLanguageDriver.createSqlSource(sqlSessionTemplate.getConfiguration(), "select * from user where id=#{id}", Integer.class);
+        newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.selectByPrimaryKey", sqlSourceSelect, SqlCommandType.SELECT, User.class);
+        SqlSource sqlSourceInsert = xmlLanguageDriver.createSqlSource(sqlSessionTemplate.getConfiguration(), "insert into user (id,name) values(#{id},#{name})", User.class);
+        newMappedStatement(sqlSessionTemplate.getConfiguration(), "com.meizhou.fly.mapper.IUserMapper.insertSelective", sqlSourceInsert, SqlCommandType.INSERT, Integer.class);
         User user = new User();
-//        user.setId(91);
         user.setName(System.currentTimeMillis() + "");
+        System.out.println("~~~~~~~~~insert~~~~~~~~~");
         System.out.println(userMapper.insertSelective(user));
         System.out.println(user.getId());
-//        System.out.println(userMapper.select2(37));
-//        System.out.println(userMapper.select());
-//        System.out.println(userMapper.insert2(37));
+        System.out.println("~~~~~~~~~select~~~~~~~~~");
+        System.out.println(userMapper.selectByPrimaryKey(37));
     }
 }
