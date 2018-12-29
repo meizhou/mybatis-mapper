@@ -1,13 +1,11 @@
 package com.meizhou.mybatis.mapper;
 
-import com.meizhou.framework.spring.PropertiesUtils;
-
 /**
  * Created by hejun on 2015/6/4.
  */
 public class MybatisConstants {
 
-	public static final String BASE_PACKAGE = PropertiesUtils.getProperty("root.package");
+	public static final String BASE_PACKAGE = "com.meizhou";
 
 	public static final String POJO_PACKAGE = BASE_PACKAGE + ".model.po";
 

@@ -1,6 +1,5 @@
 package com.meizhou.mybatis.mapper;
 
-import com.meizhou.framework.utils.CamelCaseUtils;
 
 /**
  * Created by hejun on 2015/4/24.

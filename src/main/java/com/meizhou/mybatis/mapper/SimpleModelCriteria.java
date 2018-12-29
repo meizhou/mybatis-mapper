@@ -1,7 +1,5 @@
 package com.meizhou.mybatis.mapper;
 
-import com.meizhou.framework.utils.CamelCaseUtils;
-import com.meizhou.framework.utils.PageInfo;
 
 import java.util.ArrayList;
 import java.util.List;

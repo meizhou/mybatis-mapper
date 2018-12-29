@@ -3,7 +3,6 @@
  */
 package com.meizhou.mybatis.mapper;
 
-import com.meizhou.framework.utils.CamelCaseUtils;
 import org.apache.ibatis.type.JdbcType;
 
 /**
