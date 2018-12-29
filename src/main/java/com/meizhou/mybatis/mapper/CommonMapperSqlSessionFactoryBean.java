@@ -59,7 +59,7 @@ public class CommonMapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
     }
 
     private void setMapperXml(Configuration configuration) throws Exception {
-        Set<Class<?>> foundClasses = MybatisClassUtils.getClasses(MybatisConstants.BASE_PACKAGE);
+        Set<Class<?>> foundClasses = MybatisClassUtils.getClasses(basePackage);
         for (Class<?> foundClass : foundClasses) {
             if (dsName.equals(MybatisClassUtils.getDataSourceName(foundClass))) {
                 String mapperName = MybatisClassUtils.getMapperClazzName(foundClass);
