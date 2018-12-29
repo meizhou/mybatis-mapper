@@ -1,6 +1,5 @@
 package com.meizhou.mybatis.statement;
 
-import com.meizhou.mybatis.mapper.CriteriaExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

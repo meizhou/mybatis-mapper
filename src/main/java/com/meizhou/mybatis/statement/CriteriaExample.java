@@ -1,4 +1,4 @@
-package com.meizhou.mybatis.mapper;
+package com.meizhou.mybatis.statement;
 
 import java.util.ArrayList;
 import java.util.List;

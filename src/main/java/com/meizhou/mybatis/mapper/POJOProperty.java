@@ -20,7 +20,7 @@ public class POJOProperty {
 		super();
 		this.name = name;
 		this.type = type;
-		this.column = CamelCaseUtils.toUnderlineName(name);
+		this.column = MybatisCamelCaseUtils.toUnderlineName(name);
 		this.jdbcType = JdbcTypeResolver.getJdbcType(type);
 	}
 	

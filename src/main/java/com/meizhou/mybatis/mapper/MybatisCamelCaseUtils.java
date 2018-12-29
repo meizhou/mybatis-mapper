@@ -3,7 +3,7 @@ package com.meizhou.mybatis.mapper;
 /**
  * @author meizhou 驼峰跟下划线格式互转工具类
  */
-public class CamelCaseUtils {
+public class MybatisCamelCaseUtils {
 
     private static final char SEPARATOR = '_';
 
@@ -63,10 +63,10 @@ public class CamelCaseUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(CamelCaseUtils.toCamelCase(CamelCaseUtils.toUnderlineName(CamelCaseUtils.toCamelCase("usErId"))));
-        System.out.println(CamelCaseUtils.toCamelCase("user_id"));
-        System.out.println(CamelCaseUtils.toCamelCase("user_id_naMe"));
-        System.out.println(CamelCaseUtils.toUnderlineName("user_id_naMe"));
+        System.out.println(MybatisCamelCaseUtils.toCamelCase(MybatisCamelCaseUtils.toUnderlineName(MybatisCamelCaseUtils.toCamelCase("usErId"))));
+        System.out.println(MybatisCamelCaseUtils.toCamelCase("user_id"));
+        System.out.println(MybatisCamelCaseUtils.toCamelCase("user_id_naMe"));
+        System.out.println(MybatisCamelCaseUtils.toUnderlineName("user_id_naMe"));
     }
 
 }

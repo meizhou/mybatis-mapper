@@ -18,54 +18,54 @@ public class SimpleModelCriteria extends ModelCriteria {
     private ModelCriteria.Criteria criteria = super.createCriteria();
 
     public SimpleModelCriteria eq(String propertyName, Object value) {
-        criteria.addCriterion(" `" + CamelCaseUtils.toUnderlineName(propertyName) + "` = ", value, CamelCaseUtils.toUnderlineName(propertyName));
+        criteria.addCriterion(" `" + MybatisCamelCaseUtils.toUnderlineName(propertyName) + "` = ", value, MybatisCamelCaseUtils.toUnderlineName(propertyName));
         return this;
     }
 
     public SimpleModelCriteria neq(String propertyName, Object value) {
-        criteria.addCriterion(" `" + CamelCaseUtils.toUnderlineName(propertyName) + "` != ", value, CamelCaseUtils.toUnderlineName(propertyName));
+        criteria.addCriterion(" `" + MybatisCamelCaseUtils.toUnderlineName(propertyName) + "` != ", value, MybatisCamelCaseUtils.toUnderlineName(propertyName));
         return this;
     }
 
     public SimpleModelCriteria in(String propertyName, List<?> list) {
-        criteria.addCriterion(" `" + CamelCaseUtils.toUnderlineName(propertyName) + "` in ", list, CamelCaseUtils.toUnderlineName(propertyName));
+        criteria.addCriterion(" `" + MybatisCamelCaseUtils.toUnderlineName(propertyName) + "` in ", list, MybatisCamelCaseUtils.toUnderlineName(propertyName));
         return this;
     }
 
     // 小于
     public SimpleModelCriteria lt(String propertyName, Number value) {
-        criteria.addCriterion(" `" + CamelCaseUtils.toUnderlineName(propertyName) + "` < ", value, CamelCaseUtils.toUnderlineName(propertyName));
+        criteria.addCriterion(" `" + MybatisCamelCaseUtils.toUnderlineName(propertyName) + "` < ", value, MybatisCamelCaseUtils.toUnderlineName(propertyName));
         return this;
     }
 
     // 小于等于
     public SimpleModelCriteria le(String propertyName, Number value) {
-        criteria.addCriterion(" `" + CamelCaseUtils.toUnderlineName(propertyName) + "` <= ", value, CamelCaseUtils.toUnderlineName(propertyName));
+        criteria.addCriterion(" `" + MybatisCamelCaseUtils.toUnderlineName(propertyName) + "` <= ", value, MybatisCamelCaseUtils.toUnderlineName(propertyName));
         return this;
     }
 
     // 大于
     public SimpleModelCriteria gt(String propertyName, Number value) {
-        criteria.addCriterion(" `" + CamelCaseUtils.toUnderlineName(propertyName) + "` > ", value, CamelCaseUtils.toUnderlineName(propertyName));
+        criteria.addCriterion(" `" + MybatisCamelCaseUtils.toUnderlineName(propertyName) + "` > ", value, MybatisCamelCaseUtils.toUnderlineName(propertyName));
         return this;
     }
 
     // 大于等于
     public SimpleModelCriteria ge(String propertyName, Number value) {
-        criteria.addCriterion(" `" + CamelCaseUtils.toUnderlineName(propertyName) + "` >= ", value, CamelCaseUtils.toUnderlineName(propertyName));
+        criteria.addCriterion(" `" + MybatisCamelCaseUtils.toUnderlineName(propertyName) + "` >= ", value, MybatisCamelCaseUtils.toUnderlineName(propertyName));
         return this;
     }
 
     //
     public SimpleModelCriteria orderDesc(String column) {
 
-        orderList.add(" `" + CamelCaseUtils.toUnderlineName(column) + "` desc");
+        orderList.add(" `" + MybatisCamelCaseUtils.toUnderlineName(column) + "` desc");
         super.setOrderByClause(getOrder());
         return this;
     }
 
     public SimpleModelCriteria orderAsc(String column) {
-        orderList.add(" `" + CamelCaseUtils.toUnderlineName(column) + "` asc ");
+        orderList.add(" `" + MybatisCamelCaseUtils.toUnderlineName(column) + "` asc ");
         super.setOrderByClause(getOrder());
         return this;
     }

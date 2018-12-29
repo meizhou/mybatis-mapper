@@ -1,29 +1,20 @@
 package com.meizhou.mybatis.mapper;
 
-import com.meizhou.fly.model.User;
-import freemarker.template.Template;
-
-import java.io.StringWriter;
-import java.io.Writer;
+import com.meizhou.fly.mapper.IUserInfoMapper;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by meizhou on 2018/9/15.
  */
 public class MainXml {
 
-    static freemarker.template.Configuration getConfiguration() {
-        freemarker.template.Configuration configuration = new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_0);
-        configuration.setClassForTemplateLoading(MainXml.class.getClass(), "/freemarker_mapper");
-        return configuration;
-    }
-
-
     public static void main(String[] args) throws Exception {
-        freemarker.template.Configuration configuration = getConfiguration();
-        Template template = configuration.getTemplate("common_mapper.ftl");
-        Writer writer = new StringWriter(1024);
-        template.process(new MapperMeta(User.class), writer);
-        writer.close();
-        System.out.println(writer.toString());
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+        context.start();
+        SqlSessionTemplate sqlSessionTemplate = context.getBean(SqlSessionTemplate.class);
+        IUserInfoMapper userMapper = sqlSessionTemplate.getMapper(IUserInfoMapper.class);
+        userMapper.getByPrimaryKey(1);
+        userMapper.select2();
     }
 }

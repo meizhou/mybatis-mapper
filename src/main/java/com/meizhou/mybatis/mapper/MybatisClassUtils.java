@@ -20,9 +20,9 @@ import java.util.jar.JarFile;
 /**
  * Created by xiaoshua on 2015/1/7.
  */
-public class ClassUtils {
+public class MybatisClassUtils {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ClassUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MybatisClassUtils.class);
 
     public static String getPrimaryKeyName(Class<?> clazz) {
         if (clazz == null) {
@@ -77,7 +77,7 @@ public class ClassUtils {
         }
         Class<? extends Object> clazz = po.getClass();
         Object primaryKeyValue = null;
-        String primaryKeyColumn = ClassUtils.getPrimaryKeyName(clazz);
+        String primaryKeyColumn = MybatisClassUtils.getPrimaryKeyName(clazz);
         try {
             Field primaryKeyField = ReflectionUtils.findField(clazz, primaryKeyColumn);
             primaryKeyField.setAccessible(true);
@@ -101,7 +101,7 @@ public class ClassUtils {
         }
         Class<? extends Object> clazz = po.getClass();
         Object primaryKeyValue = null;
-        String primaryKeyColumn = ClassUtils.getPrimaryKeyName(clazz);
+        String primaryKeyColumn = MybatisClassUtils.getPrimaryKeyName(clazz);
         try {
             Field primaryKeyField = ReflectionUtils.findField(clazz, primaryKeyColumn);
             primaryKeyField.setAccessible(true);
@@ -121,7 +121,7 @@ public class ClassUtils {
         }
         Class<? extends Object> clazz = po.getClass();
         Object shardKeyValue = null;
-        String shardKeyName = ClassUtils.getShardKeyName(clazz);
+        String shardKeyName = MybatisClassUtils.getShardKeyName(clazz);
         if (null == shardKeyName) {
             throw new BusinessException("分表字段未配置！");
         }
@@ -143,9 +143,9 @@ public class ClassUtils {
         if (clazz == null) {
             return null;
         }
-        DataSource dataSource = clazz.getAnnotation(DataSource.class);
+        MapperConfig dataSource = clazz.getAnnotation(MapperConfig.class);
         if (null != dataSource) {
-            return dataSource.name();
+            return dataSource.dataSource();
         }
         return null;
     }
@@ -324,7 +324,7 @@ public class ClassUtils {
     public static String getTableName(Class<?> clazz) {
         String className = clazz.getName();
         String noPackageClassName = className.substring(className.lastIndexOf(".") + 1);
-        return CamelCaseUtils.toUnderlineName(noPackageClassName);
+        return MybatisCamelCaseUtils.toUnderlineName(noPackageClassName);
     }
 
 }

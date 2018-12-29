@@ -86,7 +86,7 @@
         </where>
     </sql>
 
-    <select id="selectByCriteria" resultMap="BaseResultMap" parameterType="com.meizhou.framework.orm.mybatis.ModelCriteria" useCache="true">
+    <select id="selectByCriteria" resultMap="BaseResultMap" parameterType="com.meizhou.mybatis.mapper.ModelCriteria" useCache="true">
         select
         <if test="criterias.distinct">
             distinct
@@ -122,7 +122,7 @@
         where ${primaryKey} = ${r"#{"}id,jdbcType=${primaryKeyColumnJDBCType}}
     </delete>
 
-    <delete id="deleteByCriteria" parameterType="com.meizhou.framework.orm.mybatis.ModelCriteria">
+    <delete id="deleteByCriteria" parameterType="com.meizhou.mybatis.mapper.ModelCriteria">
         delete from
         <include refid="Table_Name"/>
         <if test="_parameter != null">
@@ -177,7 +177,7 @@
         </trim>
     </insert>
 
-    <select id="countByCriteria" parameterType="com.meizhou.framework.orm.mybatis.ModelCriteria" resultType="java.lang.Integer" useCache="true">
+    <select id="countByCriteria" parameterType="com.meizhou.mybatis.mapper.ModelCriteria" resultType="java.lang.Integer" useCache="true">
         select count(*) from
         <include refid="Table_Name"/>
         <if test="_parameter != null">

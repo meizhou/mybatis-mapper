@@ -6,8 +6,8 @@ import com.meizhou.mybatis.mapper.MapperConfig;
 import java.io.Serializable;
 import java.util.Date;
 
-@MapperConfig(dataSource = "user")
-public class User implements Serializable {
+@MapperConfig(dataSource = "test")
+public class UserInfo implements Serializable {
 
     public static final String ID = "id";
 

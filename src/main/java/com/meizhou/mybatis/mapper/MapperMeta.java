@@ -51,16 +51,16 @@ public class MapperMeta {
             }
         }
         MapperConfig mapperConfig = this.pojoClazz.getAnnotation(MapperConfig.class);
-        tableName = ClassUtils.getTableName(pojoClazz);
+        tableName = MybatisClassUtils.getTableName(pojoClazz);
         modelSize = mapperConfig.tableSize();
-        mapperName = ClassUtils.getMapperClazzName(pojoClazz);
-        primaryKeyColumn = ClassUtils.getPrimaryKeyName(pojoClazz);
-        primaryKey = CamelCaseUtils.toUnderlineName(primaryKeyColumn);
-        primaryKeyColumnJDBCType = JdbcTypeResolver.getJdbcType(ClassUtils.getPrimaryKeyType(pojoClazz));
-        shardKeyColumn = ClassUtils.getShardKeyName(pojoClazz);
+        mapperName = MybatisClassUtils.getMapperClazzName(pojoClazz);
+        primaryKeyColumn = MybatisClassUtils.getPrimaryKeyName(pojoClazz);
+        primaryKey = MybatisCamelCaseUtils.toUnderlineName(primaryKeyColumn);
+        primaryKeyColumnJDBCType = JdbcTypeResolver.getJdbcType(MybatisClassUtils.getPrimaryKeyType(pojoClazz));
+        shardKeyColumn = MybatisClassUtils.getShardKeyName(pojoClazz);
         if (null != shardKeyColumn) {
-            shardKey = CamelCaseUtils.toUnderlineName(shardKeyColumn);
-            shardKeyColumnJDBCType = JdbcTypeResolver.getJdbcType(ClassUtils.getShardKeyType(pojoClazz));
+            shardKey = MybatisCamelCaseUtils.toUnderlineName(shardKeyColumn);
+            shardKeyColumnJDBCType = JdbcTypeResolver.getJdbcType(MybatisClassUtils.getShardKeyType(pojoClazz));
         }
     }
 

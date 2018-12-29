@@ -31,3 +31,14 @@
 2018-12-29/15:37:02.049 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select * from user where id=? 
 2018-12-29/15:37:02.051 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 37(Integer)
 2018-12-29/15:37:02.085 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 1
+2018-12-29/15:46:06.917 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select `id`,`name`,`password`,`salt`,`email`,`mobile`,`status`,`is_mobile`,`is_qq`,`is_weixin`,`is_weibo`,`register_mobile_time`,`deleted_at`,`create_time`,`update_time` from user_info where id = ? 
+2018-12-29/15:46:06.971 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 1(Integer)
+2018-12-29/15:54:24.175 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select `id`,`name`,`password`,`salt`,`email`,`mobile`,`status`,`is_mobile`,`is_qq`,`is_weixin`,`is_weibo`,`register_mobile_time`,`deleted_at`,`create_time`,`update_time` from user_info where id = ? 
+2018-12-29/15:54:24.268 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 1(Integer)
+2018-12-29/15:54:24.303 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 0
+2018-12-29/15:55:44.428 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select `id`,`name`,`password`,`salt`,`email`,`mobile`,`status`,`is_mobile`,`is_qq`,`is_weixin`,`is_weibo`,`register_mobile_time`,`deleted_at`,`create_time`,`update_time` from user_info where id = ? 
+2018-12-29/15:55:44.503 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 1(Integer)
+2018-12-29/15:55:44.538 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 0
+2018-12-29/15:55:44.541 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select * from user_info where id=5 
+2018-12-29/15:55:44.541 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 
+2018-12-29/15:55:44.543 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 0

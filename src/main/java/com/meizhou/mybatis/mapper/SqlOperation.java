@@ -16,19 +16,19 @@ public class SqlOperation {
     }
 
     public static final SqlOperation getAndOperation(String opercolumn, Object operand) {
-        return new SqlOperation(CamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.AND, operand);
+        return new SqlOperation(MybatisCamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.AND, operand);
     }
 
     public static final SqlOperation getOrOperation(String opercolumn, Object operand) {
-        return new SqlOperation(CamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.OR, operand);
+        return new SqlOperation(MybatisCamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.OR, operand);
     }
 
     public static final SqlOperation getMinusOperation(String opercolumn, Object operand) {
-        return new SqlOperation(CamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.MINUS, operand);
+        return new SqlOperation(MybatisCamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.MINUS, operand);
     }
 
     public static final SqlOperation getPlusOperation(String opercolumn, Object operand) {
-        return new SqlOperation(CamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.PLUS, operand);
+        return new SqlOperation(MybatisCamelCaseUtils.toUnderlineName(opercolumn), SqlOperator.PLUS, operand);
     }
 
     public String getOpercolumn() {
