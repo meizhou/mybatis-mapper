@@ -43,9 +43,9 @@ public class CommonMapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
         setMapperXml(sqlSessionFactory.getConfiguration());
     }
 
-    private static freemarker.template.Configuration getConfiguration() {
+    private freemarker.template.Configuration getConfiguration() {
         freemarker.template.Configuration configuration = new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_0);
-        configuration.setClassForTemplateLoading(MainXml.class.getClass(), "/freemarker_mapper");
+        configuration.setClassForTemplateLoading(this.getClass(), "/freemarker_mapper");
         return configuration;
     }
 

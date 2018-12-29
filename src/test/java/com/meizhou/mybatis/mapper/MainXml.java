@@ -1,5 +1,6 @@
 package com.meizhou.mybatis.mapper;
 
+
 import com.meizhou.fly.mapper.IUserInfoMapper;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
