@@ -13,7 +13,7 @@ public class MainXml {
 
     static freemarker.template.Configuration getConfiguration() {
         freemarker.template.Configuration configuration = new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_0);
-        configuration.setClassForTemplateLoading(MainXml.class.getClass(), "/mapper");
+        configuration.setClassForTemplateLoading(MainXml.class.getClass(), "/freemarker_mapper");
         return configuration;
     }
 

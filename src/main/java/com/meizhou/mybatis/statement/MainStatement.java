@@ -1,4 +1,4 @@
-package com.meizhou.mybatis.mapper;
+package com.meizhou.mybatis.statement;
 
 import com.meizhou.fly.mapper.IUserMapper;
 import com.meizhou.fly.model.User;
@@ -27,7 +27,7 @@ public class MainStatement {
     }
 
     public static void main(String[] args) throws Exception {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext-2.xml"});
         context.start();
         SqlSessionTemplate sqlSessionTemplate = context.getBean(SqlSessionTemplate.class);
         IUserMapper userMapper = sqlSessionTemplate.getMapper(IUserMapper.class);

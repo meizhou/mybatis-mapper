@@ -25,3 +25,9 @@
 2018-11-02/16:30:42.600 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select * from user where id=? 
 2018-11-02/16:30:42.602 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 37(Integer)
 2018-11-02/16:30:42.621 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 1
+2018-12-29/15:37:01.925 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: insert into user (id,name) values(?,?) 
+2018-12-29/15:37:01.987 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: null, 1546069021888(String)
+2018-12-29/15:37:02.032 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==    Updates: 1
+2018-12-29/15:37:02.049 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==>  Preparing: select * from user where id=? 
+2018-12-29/15:37:02.051 [main] [BaseJdbcLogger.debug-159] [DEBUG] ==> Parameters: 37(Integer)
+2018-12-29/15:37:02.085 [main] [BaseJdbcLogger.debug-159] [DEBUG] <==      Total: 1
