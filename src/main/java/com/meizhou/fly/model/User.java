@@ -1,9 +1,12 @@
 package com.meizhou.fly.model;
 
 
+import com.meizhou.mybatis.mapper.MapperConfig;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@MapperConfig(dataSource = "user",tableSize = 1)
 public class User implements Serializable {
 
     public static final String ID = "id";

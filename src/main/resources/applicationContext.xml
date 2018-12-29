@@ -34,13 +34,10 @@
     </bean>
 
     <bean id="sqlSessionFactory" class="com.meizhou.mybatis.mapper.CommonMapperSqlSessionFactoryBean">
+        <property name="dsName" value="fly"/>
+        <property name="basePackage" value="com.meizhou.fly"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
-        <property name="mapperLocations">
-            <array>
-                <value>classpath:mapper/*.xml</value>
-            </array>
-        </property>
     </bean>
 
 

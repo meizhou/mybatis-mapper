@@ -40,7 +40,7 @@ public class MapperMeta {
 
     private JdbcType shardKeyColumnJDBCType;
 
-    public MapperMeta(Class<?> pojoClazz) throws Exception {
+    public MapperMeta(Class<?> pojoClazz) {
         super();
         this.pojoClazz = pojoClazz;
         this.pojoClazzName = pojoClazz.getName();
@@ -51,17 +51,9 @@ public class MapperMeta {
             }
         }
         MapperConfig mapperConfig = this.pojoClazz.getAnnotation(MapperConfig.class);
-        String className = pojoClazz.getName();
-        String nopackageClassName = className.substring(className.lastIndexOf(".") + 1);
-        tableName = CamelCaseUtils.toUnderlineName(nopackageClassName);
+        tableName = ClassUtils.getTableName(pojoClazz);
         modelSize = mapperConfig.tableSize();
-        String poPackageName = className.substring(0, className.lastIndexOf("."));
-        String basePackageName = poPackageName.substring(0, poPackageName.lastIndexOf("."));
-        mapperName = basePackageName + ".mapper" + "." + "I" + nopackageClassName + MybatisConstants.MAPPER_SUFFIX;
-        if (poPackageName.endsWith(".model.po")) {
-            basePackageName = poPackageName.substring(0, poPackageName.lastIndexOf(".model.po"));
-            mapperName = basePackageName + ".mapper" + "." + "I" + nopackageClassName + MybatisConstants.MAPPER_SUFFIX;
-        }
+        mapperName = ClassUtils.getMapperClazzName(pojoClazz);
         primaryKeyColumn = ClassUtils.getPrimaryKeyName(pojoClazz);
         primaryKey = CamelCaseUtils.toUnderlineName(primaryKeyColumn);
         primaryKeyColumnJDBCType = JdbcTypeResolver.getJdbcType(ClassUtils.getPrimaryKeyType(pojoClazz));

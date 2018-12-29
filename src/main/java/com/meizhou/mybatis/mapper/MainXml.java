@@ -24,5 +24,6 @@ public class MainXml {
         Writer writer = new StringWriter(1024);
         template.process(new MapperMeta(User.class), writer);
         writer.close();
+        System.out.println(writer.toString());
     }
 }
