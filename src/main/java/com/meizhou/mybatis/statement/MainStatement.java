@@ -27,7 +27,7 @@ public class MainStatement {
     }
 
     public static void main(String[] args) throws Exception {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext-2.xml"});
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"applicationContext-statement.xml"});
         context.start();
         SqlSessionTemplate sqlSessionTemplate = context.getBean(SqlSessionTemplate.class);
         IUserMapper userMapper = sqlSessionTemplate.getMapper(IUserMapper.class);
