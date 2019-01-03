@@ -49,13 +49,18 @@ public class MapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
         return configuration;
     }
 
-    private String renderMapperXml(MapperMeta mapperMeta, String fileName) throws Exception {
-        freemarker.template.Configuration configuration = getConfiguration();
-        Template template = configuration.getTemplate(fileName);
+
+    private void parseMapper(Class<?> clazz, String mapperFile, Configuration configuration) throws Exception {
+        MapperMeta mapperMeta = new MapperMeta(clazz);
+        freemarker.template.Configuration freeMarkerConfig = getConfiguration();
+        Template template = freeMarkerConfig.getTemplate(mapperFile);
         Writer writer = new StringWriter(1024);
         template.process(mapperMeta, writer);
         writer.close();
-        return writer.toString();
+        String mapperXml = writer.toString();
+        ByteArrayInputStream mapperXmlInputStream = new ByteArrayInputStream(mapperXml.getBytes());
+        XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(mapperXmlInputStream, configuration, mapperMeta.getMapperName(), configuration.getSqlFragments());
+        xmlMapperBuilder.parse();
     }
 
     private void setMapperXml(Configuration configuration) throws Exception {
@@ -64,16 +69,11 @@ public class MapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
             if (dsName.equals(MybatisClassUtils.getDataSourceName(foundClass))) {
                 String mapperName = MybatisClassUtils.getMapperClazzName(foundClass);
                 Class.forName(mapperName);
-                MapperMeta mapperMeta = new MapperMeta(foundClass);
-                String mapperXml;
                 if (MybatisClassUtils.getTableSize(foundClass) == 1) {
-                    mapperXml = renderMapperXml(mapperMeta, MybatisConstants.COMMON_MAPPER_TEMPLATE);
+                    parseMapper(foundClass, MybatisConstants.COMMON_MAPPER_TEMPLATE, configuration);
                 } else {
-                    mapperXml = renderMapperXml(mapperMeta, MybatisConstants.DIVISION_PRO_MAPPER_TEMPLATE);
+                    parseMapper(foundClass, MybatisConstants.DIVISION_PRO_MAPPER_TEMPLATE, configuration);
                 }
-                ByteArrayInputStream mapperXmlInputStream = new ByteArrayInputStream(mapperXml.getBytes());
-                XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(mapperXmlInputStream, configuration, mapperMeta.getMapperName(), configuration.getSqlFragments());
-                xmlMapperBuilder.parse();
             }
         }
     }
