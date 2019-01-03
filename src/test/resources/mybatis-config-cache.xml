@@ -10,10 +10,10 @@
     <typeAliases>
     </typeAliases>
     <plugins>
-        <plugin interceptor="com.meizhou.framework.mybatis.cache.CacheExecutorInterceptor">
+        <plugin interceptor="com.meizhou.mybatis.cache.CacheExecutorInterceptor">
             <property name="dbType" value="mysql"/>
             <property name="isCache" value="true"/>
-            <property name="cacheExecutorConfig" value="com.meizhou.fly.server.constant.FlyCacheExecutorConfig"/>
+            <property name="cacheExecutorConfig" value="com.meizhou.mybatis.mapper.FlyCacheExecutorConfig"/>
         </plugin>
     </plugins>
     <mappers>
