@@ -22,12 +22,17 @@ public class MainXmlCache {
         }
         UserInfo userInfo = new UserInfo();
         userInfo.setId(110);
-        userInfo.setName("update_210");
+        userInfo.setName("update_220");
         userMapper.updateSelective(userInfo);
         UserInfo userInfo110Update = userMapper.getByPrimaryKey(110);
         if (userInfo110Update != null) {
             System.out.println("name==>" + userInfo110Update.getName());
         }
+
+        SimpleModelCriteria simpleModelCriteria = new SimpleModelCriteria();
+        simpleModelCriteria.eq(UserInfo.NAME, "11111");
+        userMapper.selectByCriteria(simpleModelCriteria);
+
         userMapper.select2();
     }
 }
