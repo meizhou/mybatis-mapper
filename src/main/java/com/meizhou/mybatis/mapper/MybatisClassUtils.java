@@ -150,6 +150,18 @@ public class MybatisClassUtils {
         return null;
     }
 
+    public static Integer getTableSize(Class<?> clazz) {
+        if (clazz == null) {
+            return null;
+        }
+        MapperConfig dataSource = clazz.getAnnotation(MapperConfig.class);
+        if (null != dataSource) {
+            return dataSource.tableSize();
+        }
+        return null;
+    }
+
+
     public static Class<?> getPrimaryKeyType(Class<?> clazz) {
         if (clazz == null) {
             return null;

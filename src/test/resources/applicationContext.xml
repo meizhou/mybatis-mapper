@@ -33,7 +33,7 @@
         <property name="testOnReturn" value="false"/>
     </bean>
 
-    <bean id="sqlSessionFactory" class="com.meizhou.mybatis.mapper.CommonMapperSqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="com.meizhou.mybatis.mapper.MapperSqlSessionFactoryBean">
         <property name="dsName" value="test"/>
         <property name="basePackage" value="com.meizhou.fly"/>
         <property name="dataSource" ref="dataSource"/>
