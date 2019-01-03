@@ -14,7 +14,7 @@ import java.util.Set;
 /**
  * Created by meizhou on 2018/9/21.
  */
-public class CommonMapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
+public class MapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
 
     private String dsName;
 
@@ -49,9 +49,9 @@ public class CommonMapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
         return configuration;
     }
 
-    private String renderCommonMapperXml(MapperMeta mapperMeta) throws Exception {
+    private String renderMapperXml(MapperMeta mapperMeta, String fileName) throws Exception {
         freemarker.template.Configuration configuration = getConfiguration();
-        Template template = configuration.getTemplate(MybatisConstants.COMMON_MAPPER_TEMPLATE);
+        Template template = configuration.getTemplate(fileName);
         Writer writer = new StringWriter(1024);
         template.process(mapperMeta, writer);
         writer.close();
@@ -65,7 +65,12 @@ public class CommonMapperSqlSessionFactoryBean extends SqlSessionFactoryBean {
                 String mapperName = MybatisClassUtils.getMapperClazzName(foundClass);
                 Class.forName(mapperName);
                 MapperMeta mapperMeta = new MapperMeta(foundClass);
-                String mapperXml = renderCommonMapperXml(mapperMeta);
+                String mapperXml;
+                if (MybatisClassUtils.getTableSize(foundClass) == 1) {
+                    mapperXml = renderMapperXml(mapperMeta, MybatisConstants.COMMON_MAPPER_TEMPLATE);
+                } else {
+                    mapperXml = renderMapperXml(mapperMeta, MybatisConstants.DIVISION_PRO_MAPPER_TEMPLATE);
+                }
                 ByteArrayInputStream mapperXmlInputStream = new ByteArrayInputStream(mapperXml.getBytes());
                 XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(mapperXmlInputStream, configuration, mapperMeta.getMapperName(), configuration.getSqlFragments());
                 xmlMapperBuilder.parse();

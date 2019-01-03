@@ -9,4 +9,6 @@ public class MybatisConstants {
 
     public static final String COMMON_MAPPER_TEMPLATE = "common_mapper.ftl";
 
+    public static final String DIVISION_PRO_MAPPER_TEMPLATE = "division_pro_mapper.ftl";
+
 }
